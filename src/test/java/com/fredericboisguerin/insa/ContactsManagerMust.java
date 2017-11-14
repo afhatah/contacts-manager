@@ -30,6 +30,8 @@ public class ContactsManagerMust {
         System.setOut(new PrintStream(out));
     }
 
+
+
     @Test
     public void list_one_contact_without_email_nor_phone_number() {
         ContactsManager contactsManager = new ContactsManager();
