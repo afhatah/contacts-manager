@@ -17,6 +17,9 @@ public class ContactsManager {
         if (name==null)
             throw new InvalidContactNameException();
 
+        if (name.equals(""))
+            throw new InvalidContactNameException();
+
         Contact c = new Contact();
 
         c.name = name;
