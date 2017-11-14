@@ -13,11 +13,16 @@ public class ContactsManager {
         this.contacts = new ArrayList<>();
     }
 
-    public void addContact(String name, String email, String phoneNumber) {
+    public void addContact(String name, String email, String phoneNumber) throws InvalidContactNameException {
+        if (name==null)
+            throw new InvalidContactNameException();
+
         Contact c = new Contact();
+
         c.name = name;
         c.email = email;
         c.phoneNumber = phoneNumber;
+
 
         contacts.add(c);
     }
