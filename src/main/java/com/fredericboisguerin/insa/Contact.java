@@ -6,6 +6,9 @@ public class Contact {
     String phoneNumber;
 
     public String toString() {
-        return name + ", " + email + ", " + phoneNumber;
+        if (email!= null)
+            return name + ", " + email + ", " + phoneNumber;
+        else
+            return name + ", " + phoneNumber;
     }
 }
