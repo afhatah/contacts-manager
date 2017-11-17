@@ -13,16 +13,20 @@ public class ContactsManager {
         this.contacts = new ArrayList<>();
     }
 
-    public void addContact(String name, String email, String phoneNumber) throws InvalidContactNameException {
+    public void addContact(String name, String email, String phoneNumber) throws InvalidContactNameException, InvalidEmailException {
         if (name==null)
             throw new InvalidContactNameException();
 
         if (name.equals(""))
             throw new InvalidContactNameException();
 
+        if (email!=null && !email.contains("@"))
+            throw new  InvalidEmailException();
+
         Contact c = new Contact();
 
         c.name = name;
+
         c.email = email;
         c.phoneNumber = phoneNumber;
 
@@ -31,7 +35,8 @@ public class ContactsManager {
     }
 
     public void printAllContacts() {
-        System.out.print(contacts.toString());
+        for (Contact c : contacts)
+            System.out.println(c);
     }
 
     public void searchContactByName(String name) {
@@ -41,4 +46,22 @@ public class ContactsManager {
             }
         }
     }
+
+    public String[] getAllContactsForCSV() {
+        String[] ch = new String[contacts.size()];
+        for (int i=0; i < ch.length ; i++) {
+            ch[i] = contacts.get(i).toStringforCSV();
+        }
+        return ch;
+    }
+
+    public String[] getAllContacts() {
+        String[] ch = new String[contacts.size()];
+        for (int i=0; i < ch.length ; i++) {
+            ch[i] = contacts.get(i).toString();
+        }
+        return ch;
+    }
+
+
 }
